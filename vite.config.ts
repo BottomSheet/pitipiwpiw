@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/pitipiwpiw/',   // ← ОБЯЗАТЕЛЬНО должно быть именно так
+  base: '/pitipiwpiw/',  
 
   plugins: [
     vue(),
