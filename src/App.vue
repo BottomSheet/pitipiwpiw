@@ -125,9 +125,9 @@ onMounted(() => {
 }
 
 .intro-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);   /* ← Nunito */
   font-size: clamp(26px, 7vw, 34px);
-  font-weight: 900;
+  font-weight: 800;
   background: linear-gradient(135deg, #FF8FAB, #FF4081);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

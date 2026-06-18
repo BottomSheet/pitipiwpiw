@@ -171,15 +171,12 @@ async function handleTap(e: MouseEvent) {
 
 /* Надпись ДЕВОЧКА — простой и чёткий текст */
 .gender-text {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-display);   /* ← Nunito */
   font-size: clamp(46px, 12.5vw, 60px);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: #FF4A8F;                    /* Красивый ярко-розовый */
-  text-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.2),
-    0 0 25px rgba(255, 74, 143, 0.5);
+  color: #FF4A8F;
   
   margin-bottom: 14px;
   opacity: 1;
@@ -206,12 +203,10 @@ async function handleTap(e: MouseEvent) {
 @keyframes glow-pulse {
   0%, 100% {
     text-shadow: 
-      0 4px 12px rgba(0, 0, 0, 0.2),
       0 0 25px rgba(255, 74, 143, 0.5);
   }
   50% {
     text-shadow: 
-      0 4px 18px rgba(0, 0, 0, 0.25),
       0 0 40px rgba(255, 74, 143, 0.8);
   }
 }
