@@ -93,3 +93,12 @@ html, body {
   background: var(--pink-light);
   color: #5a2d3f;
 }
+
+/* Принудительно применяем Nunito ко всем элементам */
+* {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .gender-text, .big-emotional-text, .pre-label, .tap-hint, .bottom-message p {
+  font-family: var(--font-display);
+}
