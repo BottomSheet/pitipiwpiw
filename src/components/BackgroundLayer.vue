@@ -4,9 +4,9 @@
 
   <!-- Layer 1: glow orbs (slow parallax) -->
   <div class="bg-layer layer-1" :style="layer1Style">
-    <div class="orb orb-1" :class="store.isGirl ? 'orb-pink' : 'orb-blue'" />
-    <div class="orb orb-2" :class="store.isGirl ? 'orb-rose' : 'orb-cyan'" />
-    <div class="orb orb-3" :class="store.isGirl ? 'orb-lilac' : 'orb-sky'" />
+    <div class="orb orb-1 orb-pink" />
+    <div class="orb orb-2 orb-rose" />
+    <div class="orb orb-3 orb-lilac" />
   </div>
 
   <!-- Layer 2: sparkles / stars (medium parallax) -->
@@ -64,13 +64,13 @@ const sparkles = ref(
   }))
 )
 
-// Floating clouds / heart shapes
-const cloudEmojisGirl = ['💗', '🌸', '☁️', '💞', '🌺', '💫', '⭐', '🌙']
-const cloudEmojisBoy = ['💙', '⭐', '☁️', '💫', '🌊', '🌙', '❄️', '🔵']
+// Только розовые/девичьи облачка
+const cloudEmojis = ['💗', '🌸', '☁️', '💞', '🌺', '💫', '⭐', '🌙', '🦋', '🩷']
+
 const clouds = ref(
   Array.from({ length: 12 }, (_, i) => ({
     id: i,
-    emoji: (i % 2 === 0 ? cloudEmojisGirl : cloudEmojisBoy)[Math.floor(Math.random() * 8)],
+    emoji: cloudEmojis[Math.floor(Math.random() * cloudEmojis.length)],
     style: {
       left: `${Math.random() * 95}%`,
       top: `${Math.random() * 90}%`,
@@ -102,7 +102,7 @@ const clouds = ref(
   z-index: 1;
 }
 
-/* Glow orbs */
+/* Glow orbs - только розовые */
 .orb {
   position: absolute;
   border-radius: 50%;
@@ -113,12 +113,9 @@ const clouds = ref(
 .orb-2 { width: 45vw; height: 45vw; bottom: -5%; right: -5%; }
 .orb-3 { width: 35vw; height: 35vw; top: 35%; left: 30%; }
 
-.orb-pink  { background: radial-gradient(circle, #FFB6C1, #FF69B4); }
-.orb-rose  { background: radial-gradient(circle, #FFD6E0, #FF8FAB); }
+.orb-pink { background: radial-gradient(circle, #FFB6C1, #FF69B4); }
+.orb-rose { background: radial-gradient(circle, #FFD6E0, #FF8FAB); }
 .orb-lilac { background: radial-gradient(circle, #E8C5E5, #D4A0D0); }
-.orb-blue  { background: radial-gradient(circle, #A5D6FF, #5BB8F5); }
-.orb-cyan  { background: radial-gradient(circle, #D0EEFF, #87CEEB); }
-.orb-sky   { background: radial-gradient(circle, #B0E0FF, #6495ED); }
 
 /* Sparkles */
 .sparkle {

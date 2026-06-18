@@ -3,16 +3,16 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/pitipiwpiw/',     // ← Должно быть точно такое же, как название репозитория
+  base: '/pitipiwpiw/',   // ← ОБЯЗАТЕЛЬНО должно быть именно так
 
   plugins: [
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Гендер паття 💕',
+        name: 'Гендер паття💕',
         short_name: 'Гендер паття',
-        description: 'Объявление пола будущего малыша',
+        description: 'Узнай пол ребёнка!',
         theme_color: '#FFB6C1',
         background_color: '#fff0f5',
         display: 'standalone',
