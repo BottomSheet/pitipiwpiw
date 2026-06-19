@@ -1,4 +1,5 @@
 <template>
+  <div class="app" :style="{ background: store.bgGradient, '--px': parallax.x, '--py': parallax.y }"></div>
   <div class="app" :style="{ background: store.bgGradient }">
     <!-- BG layers with parallax -->
     <BackgroundLayer :px="parallax.x" :py="parallax.y" />
@@ -80,6 +81,7 @@ onMounted(() => {
 
 /* ===== STAGE (center layout) ===== */
 .stage {
+  transform: rotateY(calc(var(--px) * 4deg)) rotateX(calc(var(--py) * -4deg));
   position: absolute;
   inset: 0;
   display: flex;
@@ -105,6 +107,8 @@ onMounted(() => {
 }
 
 .intro-content {
+  position: relative;   /* добавить */
+  overflow: hidden;     /* добавить */
   text-align: center;
   padding: 40px 32px;
   display: flex;

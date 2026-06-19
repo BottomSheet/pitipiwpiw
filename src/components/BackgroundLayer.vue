@@ -113,6 +113,9 @@ const clouds = ref(
 
 /* Glow orbs - только розовые */
 .orb {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.45;
   filter: blur(70px) url(#liquid-glass);
 }
 .orb-1 { width: 55vw; height: 55vw; top: -10%; left: -10%; }

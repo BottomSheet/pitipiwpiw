@@ -80,6 +80,18 @@ function requestGyro() {
   transform: scale(0.93) !important;
 }
 
+.btn-replay {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.35);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  color: #5a2d3f;
+  font-size: clamp(13px, 3.5vw, 15px);
+  padding: 11px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08),
+              0 4px 20px rgba(255,143,171,0.25);
+}
+
 /* Replay Button */
 .btn-replay::before,
 .intro-content::before {

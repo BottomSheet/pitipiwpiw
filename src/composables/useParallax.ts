@@ -113,10 +113,12 @@ function updateLoop() {
   })
 
   onUnmounted(() => {
-    if (rafId) cancelAnimationFrame(rafId)
-    window.removeEventListener('deviceorientation', handleOrientation)
-    window.removeEventListener('mousemove', handleMouseMove)
-    window.removeEventListener('touchmove', handleTouchMove)
+  if (rafId) cancelAnimationFrame(rafId)
+  window.removeEventListener('deviceorientation', handleOrientation)
+  window.removeEventListener('mousemove', handleMouseMove)
+  window.removeEventListener('touchmove', handleTouchMove)
+  window.removeEventListener('touchend', handleTouchEnd)      // добавить
+  window.removeEventListener('touchcancel', handleTouchEnd)   // добавить
   })
 
   return { state, hasGyroscope, isPermissionGranted, requestGyroscope }
