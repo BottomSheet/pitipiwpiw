@@ -16,17 +16,21 @@ export function useParallax() {
   let currentX = 0
   let currentY = 0
 
-  // Smooth lerp update loop
-  function lerp(a: number, b: number, t: number) {
-    return a + (b - a) * t
-  }
+  // заменить lerp-цикл на это:
+let velX = 0, velY = 0
+const stiffness = 0.08   // "жёсткость" пружины
+const damping = 0.82     // затухание (0..1, чем меньше — тем сильнее тормозит)
 
-  function updateLoop() {
-    currentX = lerp(currentX, targetX, 0.06)
-    currentY = lerp(currentY, targetY, 0.06)
-    state.value = { x: currentX, y: currentY }
-    rafId = requestAnimationFrame(updateLoop)
-  }
+function updateLoop() {
+  const ax = (targetX - currentX) * stiffness
+  const ay = (targetY - currentY) * stiffness
+  velX = (velX + ax) * damping
+  velY = (velY + ay) * damping
+  currentX += velX
+  currentY += velY
+  state.value = { x: currentX, y: currentY }
+  rafId = requestAnimationFrame(updateLoop)
+}
 
   // ===== GYROSCOPE (mobile) =====
   function handleOrientation(e: DeviceOrientationEvent) {
@@ -80,6 +84,11 @@ export function useParallax() {
     targetY = (touch.clientY - cy) / cy
   }
 
+  function handleTouchEnd() {
+  targetX = 0
+  targetY = 0
+}
+
   onMounted(() => {
     rafId = requestAnimationFrame(updateLoop)
 
@@ -96,6 +105,8 @@ export function useParallax() {
       }
       window.addEventListener('deviceorientation', testListener, { passive: true })
       window.addEventListener('touchmove', handleTouchMove, { passive: true })
+      window.addEventListener('touchend', handleTouchEnd, { passive: true })
+      window.addEventListener('touchcancel', handleTouchEnd, { passive: true })
     } else {
       window.addEventListener('mousemove', handleMouseMove, { passive: true })
     }

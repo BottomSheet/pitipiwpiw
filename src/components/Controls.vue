@@ -71,8 +71,8 @@ function requestGyro() {
   font-weight: 500;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
   user-select: none;
 }
 
@@ -81,14 +81,15 @@ function requestGyro() {
 }
 
 /* Replay Button */
-.btn-replay {
-  background: rgba(255,255,255,0.35);
-  border: 1.5px solid rgba(255,255,255,0.55);
-  color: #5a2d3f;
-  font-size: clamp(13px, 3.5vw, 15px);
-  padding: 11px 24px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08),
-              0 4px 20px rgba(255,143,171,0.25);
+.btn-replay::before,
+.intro-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.25) 100%);
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
 
 /* Gyro Button */

@@ -9,7 +9,7 @@
       :class="{ 'is-revealed': store.revealed }"
       @click="handleTap"
     >
-      <p class="pre-label">Мы с нетерпением ждём</p>
+      <p class="pre-label">Мы с нетерпением ждём тебя, наша:</p>
 
       <!-- Большое сердечко в центре -->
       <div class="main-emoji">🩷</div>

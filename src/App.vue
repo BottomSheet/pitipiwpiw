@@ -159,6 +159,11 @@ onMounted(() => {
   letter-spacing: 0.01em;
 }
 
+.stage {
+  transform: rotateY(calc(var(--px) * 4deg)) rotateX(calc(var(--py) * -4deg));
+  transition: transform 0.15s ease-out;
+}
+
 .intro-btn:active {
   transform: scale(0.95);
   box-shadow: 0 4px 14px rgba(255, 64, 129, 0.3);

@@ -28,6 +28,15 @@
       :style="c.style"
     >{{ c.emoji }}</span>
   </div>
+
+  <svg width="0" height="0" style="position:absolute">
+  <filter id="liquid-glass">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise">
+      <animate attributeName="baseFrequency" dur="14s" values="0.008 0.012;0.014 0.02;0.008 0.012" repeatCount="indefinite" />
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="35" />
+  </filter>
+</svg>
 </template>
 
 <script setup lang="ts">
@@ -44,9 +53,9 @@ function parallaxStyle(factorX: number, factorY: number) {
   }
 }
 
-const layer1Style = computed(() => parallaxStyle(-12, -8))
-const layer2Style = computed(() => parallaxStyle(-20, -14))
-const layer3Style = computed(() => parallaxStyle(-30, -20))
+const layer1Style = computed(() => parallaxStyle(-25, -18))
+const layer2Style = computed(() => parallaxStyle(-45, -30))
+const layer3Style = computed(() => parallaxStyle(-70, -45))
 
 // Sparkles
 const sparkles = ref(
@@ -104,10 +113,7 @@ const clouds = ref(
 
 /* Glow orbs - только розовые */
 .orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.45;
+  filter: blur(70px) url(#liquid-glass);
 }
 .orb-1 { width: 55vw; height: 55vw; top: -10%; left: -10%; }
 .orb-2 { width: 45vw; height: 45vw; bottom: -5%; right: -5%; }
