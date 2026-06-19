@@ -64,6 +64,11 @@ function requestGyro() {
 }
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-height: 46px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
