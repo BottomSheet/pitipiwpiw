@@ -1,5 +1,6 @@
 <template>
-  <div class="app" :style="{ background: store.bgGradient, '--px': parallax.x, '--py': parallax.y }">
+  <div class="app" :style="{ background: store.bgGradient, '--px': parallax.x, '--py': parallax.y }"></div>
+  <div class="app" :style="{ background: store.bgGradient }">
     <!-- BG layers with parallax -->
     <BackgroundLayer :px="parallax.x" :py="parallax.y" />
 
@@ -75,15 +76,12 @@ onMounted(() => {
   height: 100%;
   height: 100dvh;
   overflow: hidden;
-  perspective: 1000px; /* даёт реальную глубину 3D-наклону рамки от параллакса */
   transition: background 1.2s ease;
 }
 
 /* ===== STAGE (center layout) ===== */
 .stage {
   transform: rotateY(calc(var(--px) * 4deg)) rotateX(calc(var(--py) * -4deg));
-  transition: transform 0.15s ease-out;
-  transform-style: preserve-3d;
   position: absolute;
   inset: 0;
   display: flex;
@@ -163,6 +161,11 @@ onMounted(() => {
   transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
   -webkit-tap-highlight-color: transparent;
   letter-spacing: 0.01em;
+}
+
+.stage {
+  transform: rotateY(calc(var(--px) * 4deg)) rotateX(calc(var(--py) * -4deg));
+  transition: transform 0.15s ease-out;
 }
 
 .intro-btn:active {
