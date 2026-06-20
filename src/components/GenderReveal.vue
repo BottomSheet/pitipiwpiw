@@ -100,6 +100,7 @@ async function handleTap(e: MouseEvent) {
   gap: 24px;
   will-change: transform;
   transition: transform 0.12s linear;
+  transform-style: preserve-3d;
 }
 
 /* Halo */
@@ -117,8 +118,8 @@ async function handleTap(e: MouseEvent) {
 }
 
 @keyframes halo-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.45; }
-  50% { transform: scale(1.18); opacity: 0.7; }
+  0%, 100% { transform: scale(1) translateZ(-60px); opacity: 0.45; }
+  50% { transform: scale(1.18) translateZ(-60px); opacity: 0.7; }
 }
 
 /* Glass Card */
@@ -136,13 +137,14 @@ async function handleTap(e: MouseEvent) {
     0 10px 40px rgba(0,0,0,0.1),
     0 0 0 1px rgba(255,255,255,0.4) inset,
     0 25px 50px rgba(255, 105, 180, 0.15);
-  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  transform: translateZ(40px);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, background 0.3s ease;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
 
 .reveal-card:active {
-  transform: scale(0.96);
+  transform: translateZ(40px) scale(0.96);
 }
 
 /* Pre-label */
